@@ -11,6 +11,9 @@ function createDoc(e){
     var tourTime = e.values[2];
     var payment_method = e.values[11];
     var name =  e.values[12];
+    var lunch = e.values[19];
+    var presentation = e.values[5];
+    var transport = e.values[9];
 
     //format date options
     var day = new Date(visit_date);
@@ -21,11 +24,9 @@ function createDoc(e){
 
     var long_form_day = day.toLocaleDateString(day,options);
 
-    var lunch = e.values[19];
-    var presentation = e.values[5];
-    var transport = e.values[9];
 
-    // Create a new Google Doc named 'Hello, world!'
+
+    // Create a new Google Doc using the group name and the visit date
     var doc = DocumentApp.create('Visitor Itinerary--'+group_name + '--' + visit_date);
 
     doc.getBody().appendParagraph("GROUP/VIP TOUR ITINERARY");
@@ -100,7 +101,6 @@ function createDoc(e){
 
     // Get the URL of the document.
     var url = doc.getUrl();
-
 
     // Append a new string to the "url" variable to use as an email body.
     var message = 'Here is the the link to the generated document: ' + url;
